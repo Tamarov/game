@@ -1,0 +1,77 @@
+<style>
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#main{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+#headBar{
+    width: 90%;
+    height: 5%;
+    background-color: green;
+    float: left;
+}
+#leftBar{
+    width: 10%;
+    height: 15%;
+    background-color: greenyellow;
+    float: left;
+}
+#rightBar{
+    width: 5%;
+    height: 95%;
+    background-color: magenta;
+    float:right;
+}
+#terminalBar{
+    width: 100%;
+    height: 20%;
+    background-color: gold;
+    position: absolute;
+    bottom: 0px;
+    overflow: scroll;
+}
+</style>
+
+<div id="main">
+    <div id="leftBar"></div>
+    <div id="headBar"></div>
+    <div id="rightBar"></div>
+    <div id="terminalBar"></div>
+</div>
+
+<script>    
+    var timeT = timeB = 0;
+    
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function changeColor(){
+        timeT = getRandomInt(1, 5);
+        switch(timeT){
+            case 1:
+                timeB = "Зомби идет к вам";
+                break;
+            case 2:
+                timeB = "В соседнем доме взрывается газ";
+                break;
+            case 3:
+                timeB = "Начинается дождь";
+                break;
+            case 4:
+                timeB = "Недалеко слышна стрельба";
+                break;
+            default:
+                break;
+        }
+        var text = document.getElementById("terminalBar");
+        document.getElementById("terminalBar").innerHTML = text.innerHTML + "<br>" + timeB;
+        timeB = timeT;
+    }
+    changeColor();
+    setInterval('changeColor()', 60000);
+</script>
